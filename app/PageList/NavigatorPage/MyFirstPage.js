@@ -6,6 +6,9 @@ import {
     View,  
 } from 'react-native';  
 
+import { IconData } from '../../Common/styles/IconBase';
+import HeadBar from '../../Common/components/HeadBar';
+
 export default class MyFirstPage extends Component {  
     goToSecondPage(){
         this.props.navigation.navigate('MySecondPage', 
@@ -18,39 +21,17 @@ export default class MyFirstPage extends Component {
         )
     } 
     render() {  
-        const { navigate } = this.props.navigation;  
         return (  
             <View style={{flex:1}}>  
+                <HeadBar
+                    title="第一页"
+                    leftIcon={IconData.newBackIcon}
+                    leftIconPress={() => {this.props.navigation.goBack()}} />
                 <View style={styles.btnStyle}>
                     <Button
                         onPress={() => this.goToSecondPage()}
                         title="Chat with xhh"  /> 
                 </View> 
-                <View style={styles.btnStyle}>
-                    <Button 
-                        onPress={() => navigate('ComponentState')} 
-                        title="ComponentState"  /> 
-                </View>
-                <View style={styles.btnStyle}>
-                    <Button  
-                        onPress={() => navigate('ComponentSwitch')} 
-                        title="ComponentSwitch"  /> 
-                </View> 
-                <View style={styles.btnStyle}>
-                    <Button
-                        onPress={() => navigate('ComponentTime')} 
-                        title="ComponentTime"  />
-                </View> 
-                <View style={styles.btnStyle}>
-                    <Button
-                        onPress={() => navigate('MyList')} 
-                        title="MyList"  />   
-                </View>
-                <View style={styles.btnStyle}>
-                    <Button
-                        onPress={() => navigate('CommonComponent')} 
-                        title="CommonComponent"  />   
-                </View>
             </View>  
         );  
     }  
